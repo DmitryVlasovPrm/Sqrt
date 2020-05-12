@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>SQRT</title>
+        <link rel = "stylesheet" href = "Design.css">
+        <script src = 'complex.js'></script>
+        <script src = "Functions.js"></script>
+    </head>
+    <body>
+        <form class = "main_form" action = "" method = "POST">
+
+            <div class = "image">
+                <img class = "image" src = "sqrt.png">
+            </div>
+
+            <div class = "header">Вычисление квадратного корня</div>
+            <hr>
+
+            <div class = "text">
+                Введите число<br>
+                <input type = "text" id = "input"><br>
+                Введите точность<br>
+                <input type = "text" id = "accuracy"><br>
+            </div>
+
+            <div class = "text">
+                Ответ<br>
+                <label id = "output"></label>
+            </div>
+
+            <div class = "text">
+                <button type = "button" onclick = "sqrt()" id = "btn">Вычислить</button>
+                <br>
+            </div>
+        </form>
+    </body>
+</html>
