@@ -3,28 +3,31 @@
     <head>
         <meta charset = "UTF-8">
         <title>SQRT</title>
+        <!--Ссылка на каскадную таблицу стилей-->
         <link rel = "stylesheet" href = "Design.css">
+        <!--Ссылка на скрипты, написанные на javascript-->
         <script src = "Functions.js"></script>
         <script src="require.js"></script>
 <!--        <script src="math.js" type="text/javascript"></script>-->
     </head>
     <body>
+        <!--Разметка формы-->
         <form class="main_form" action="" method="POST">
-
+            <!--Разметка центрального изображения-->
             <div class="image">
                 <img class="image" src="sqrt.png" alt="sqrt">
             </div>
-
+            <!--Разметка заголовка-->>
             <div class="header">Вычисление квадратного корня</div>
             <hr>
-
+            <!--Разметка лейбов для ввода числа-->
             <div class="text">
                 Введите число<br>
                 <input type="text" id="input"><br>
                 Введите количество знаков после запятой<br>
                 <input type="text" id="accuracy" value="0"><br>
             </div>
-
+            <!--Разметка лейбов для вывода результата-->
             <div class="text">
                 Ответ (численный)<br>
                 <label id="output1"></label>
@@ -32,13 +35,15 @@
                 Ответ (аналитический)<br>
                 <label id="output2"></label>
             </div>
-
+            <!--Разметка для кнопки вычисления результата-->
             <div class="text">
                 <button type="button" onclick="sqrt()" id="btn">Вычислить</button>
             </div>
+            <!--Разметка для текста, в котором указан номер поддержки-->
             <div class="text">
                 Поддержка: 8(912)5819857
             </div>
+            <!--Разметка для ссылок на другие версии страниц-->
             <div class="language">
                 <a href="MainPage.html"><img src="Russian_thumb.png"></a>
                 <a href="MainPageEn.html"><img src="English_thumb.png"></a>

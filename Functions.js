@@ -11,7 +11,7 @@ function error(cur_type) {
     document.getElementById("output1").innerHTML = str;
     document.getElementById("output2").innerHTML = '';
 }
-
+//Ограничение на точность
 function signs_count() {
     let str = document.getElementById("accuracy").value;
     if (str !== "") {
@@ -28,7 +28,7 @@ function signs_count() {
         }
     }
 }
-
+//Получение аналитического решения
 function get_analytical_root(x) {
     if (x === 0 || x === 1)
         return x;
@@ -52,7 +52,7 @@ function get_analytical_root(x) {
     } else
         return "";
 }
-
+//Получение квадратного корня из числа
 function sqrt() {
     let signs = signs_count();
     if (signs === -1)
