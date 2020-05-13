@@ -19,39 +19,52 @@ function signs_count()
     if (str !== "")
     {
         let num = Number(str);
-        if ((!num || num < 0 || !Number.isInteger(num)) && num !== 0 )
+        if ((!num || num < 0 || !Number.isInteger(num)) && num !== 0)
         {
             error(1);
             return -1;
         }
         else
+        {
+            if (num > 25)
+            {
+                num = 25;
+                document.getElementById("accuracy").value = "25";
+            }
             return num;
+        }
     }
 }
 
-function get_analytical_root(x){
-    if(Number.isInteger(x) && x>0){
+function get_analytical_root(x)
+{
+    if (x === 0 || x === 1)
+        return x;
+    if (Number.isInteger(x) && x >= 0)
+    {
         let outside_root = 1;
         let inside_root = x;
         let d = 2
-        while (d * d <= inside_root) {
-            if (inside_root % (d * d) === 0) {
+        while (d * d <= inside_root)
+        {
+            if (inside_root % (d * d) === 0)
+            {
                 inside_root = inside_root / (d * d)
                 outside_root = outside_root * d
-            } else {
-                d = d + 1
             }
+            else
+                d = d + 1
         }
-        if(outside_root === 1){
+        if (outside_root === 1)
             return "√" + String(inside_root);
-        }else if(inside_root === 1){
-            return String(outside_root);
-        }else {
-            return String(outside_root) + "√" + String(inside_root);
-        }
-    }else{
-        return "";
+        else
+            if (inside_root === 1)
+                return String(outside_root);
+            else
+                return String(outside_root) + "√" + String(inside_root);
     }
+    else
+        return "";
 }
 
 function sqrt()
