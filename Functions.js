@@ -26,10 +26,10 @@ function signs_count()
         }
         else
         {
-            if (num > 15)
+            if (num > 25)
             {
-                num = 15;
-                document.getElementById("accuracy").value = "15";
+                num = 25;
+                document.getElementById("accuracy").value = "25";
             }
             return num;
         }
