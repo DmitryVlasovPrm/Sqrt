@@ -4,7 +4,6 @@
         <meta charset = "UTF-8">
         <title>SQRT</title>
         <link rel = "stylesheet" href = "Design.css">
-        <script src = 'complex.js'></script>
         <script src = "Functions.js"></script>
     </head>
     <body>
@@ -20,13 +19,16 @@
             <div class = "text">
                 Введите число<br>
                 <input type = "text" id = "input"><br>
-                Введите точность<br>
-                <input type = "text" id = "accuracy"><br>
+                Введите количество знаков после запятой<br>
+                <input type = "text" id = "accuracy" value = "0"><br>
             </div>
 
             <div class = "text">
-                Ответ<br>
-                <label id = "output"></label>
+                Ответ (численный)<br>
+                <label id = "output1"></label>
+                <br>
+                Ответ (аналитический)<br>
+                <label id = "output2"></label>
             </div>
 
             <div class = "text">
