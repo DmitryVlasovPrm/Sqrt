@@ -29,6 +29,31 @@ function signs_count()
     }
 }
 
+function get_analytical_root(x){
+    if(Number.isInteger(x) && x>0){
+        let outside_root = 1;
+        let inside_root = x;
+        let d = 2
+        while (d * d <= inside_root) {
+            if (inside_root % (d * d) === 0) {
+                inside_root = inside_root / (d * d)
+                outside_root = outside_root * d
+            } else {
+                d = d + 1
+            }
+        }
+        if(outside_root === 1){
+            return "√" + String(inside_root);
+        }else if(inside_root === 1){
+            return String(outside_root);
+        }else {
+            return String(outside_root) + "√" + String(inside_root);
+        }
+    }else{
+        return "";
+    }
+}
+
 function sqrt()
 {
     let signs = signs_count();
@@ -52,7 +77,7 @@ function sqrt()
                 sq = Math.sqrt(num).toFixed(signs);
 
             document.getElementById("output1").innerHTML = String(sq);
-            document.getElementById("output2").innerHTML = String(sq);
+            document.getElementById("output2").innerHTML = get_analytical_root(num);
         }
         else
             error(3);
