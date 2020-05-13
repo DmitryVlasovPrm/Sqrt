@@ -1,11 +1,11 @@
 function error(cur_type)
 {
     let str;
-    if (cur_type == 1)
+    if (cur_type === 1)
         str = "Введите верное количество знаков";
-    if (cur_type == 2)
+    if (cur_type === 2)
         str = "Введите значение";
-    if (cur_type == 3)
+    if (cur_type === 3)
         str = "Введите число";
 
     document.getElementById("output1").style.color = "red";
@@ -16,10 +16,10 @@ function error(cur_type)
 function signs_count()
 {
     let str = document.getElementById("accuracy").value;
-    if (str != "")
+    if (str !== "")
     {
         let num = Number(str);
-        if ((!num || num < 0 || !Number.isInteger(num)) && num != 0 )
+        if ((!num || num < 0 || !Number.isInteger(num)) && num !== 0 )
         {
             error(1);
             return -1;
@@ -32,16 +32,16 @@ function signs_count()
 function sqrt()
 {
     let signs = signs_count();
-    if (signs == -1)
+    if (signs === -1)
         return;
 
     let str = document.getElementById("input").value;
-    if (str == "")
+    if (str === "")
         error(2);
     else
     {
         let num = Number(str);
-        if (num || str == "0")
+        if (num || str === "0")
         {
             document.getElementById("output1").style.color = "black";
 
