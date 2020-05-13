@@ -26,10 +26,10 @@ function signs_count()
         }
         else
         {
-            if (num > 25)
+            if (num > 15)
             {
-                num = 25;
-                document.getElementById("accuracy").value = "25";
+                num = 15;
+                document.getElementById("accuracy").value = "15";
             }
             return num;
         }
@@ -92,7 +92,21 @@ function sqrt()
                 else
                     sq = Math.sqrt(num).toFixed(signs);*/
 
-                document.getElementById("output1").innerHTML = String(num.sqrt().format(signs));
+                let ans;
+                if(math.isZero(num.im)){
+                    if (num.re < 0) {
+                        ans = "± " + String(Math.sqrt(Math.abs(num.re)).toFixed(signs)) + "i";
+                    }else {
+                        ans = String(Math.sqrt(num.re).toFixed(signs));
+                    }
+                }else{
+                    let cur_real = num.sqrt().re;
+                    let cur_im = num.sqrt().im;
+                    ans = "± " +String(cur_real.toFixed(signs))
+                    + " ± " + String(cur_im.toFixed(signs)) + "i";
+                }
+
+                document.getElementById("output1").innerHTML = ans;
                 if(math.isZero(num.im)) {
                     document.getElementById("output2").innerHTML = get_analytical_root(num.re);
                 }else{
