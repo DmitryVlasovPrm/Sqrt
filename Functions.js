@@ -65,21 +65,30 @@ function sqrt()
         error(2);
     else
     {
-        let num = Number(str);
-        if (num || str === "0")
-        {
-            document.getElementById("output1").style.color = "black";
+        //let num = Number(str);
+        require(['math.js'], function (math) {
+            //let Complex = complex_module;
+            let num = math.complex(str);
+            if (num || str === "0")
+            {
+                document.getElementById("output1").style.color = "black";
 
-            let sq;
-            if (num < 0)
-                sq = "± " + String(Math.sqrt(Math.abs(num)).toFixed(signs)) + "i";
+                /*let sq;
+                if (num < 0)
+                    sq = "± " + String(Math.sqrt(Math.abs(num)).toFixed(signs)) + "i";
+                else
+                    sq = Math.sqrt(num).toFixed(signs);*/
+
+                document.getElementById("output1").innerHTML = String(num.sqrt().format(signs));
+                if(math.isZero(num.im)) {
+                    document.getElementById("output2").innerHTML = get_analytical_root(num.re);
+                }else{
+                    document.getElementById("output2").innerHTML = "";
+                }
+            }
             else
-                sq = Math.sqrt(num).toFixed(signs);
+                error(3);
+        });
 
-            document.getElementById("output1").innerHTML = String(sq);
-            document.getElementById("output2").innerHTML = get_analytical_root(num);
-        }
-        else
-            error(3);
     }
 }
