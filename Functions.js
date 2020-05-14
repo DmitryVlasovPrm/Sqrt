@@ -1,4 +1,6 @@
-function error(cur_type) {
+//Функция для вывыда сообщения об ошибке
+function error(cur_type)
+{
     let str;
     if (cur_type === 1)
         str = "Введите верное количество знаков";
@@ -11,16 +13,23 @@ function error(cur_type) {
     document.getElementById("output1").innerHTML = str;
     document.getElementById("output2").innerHTML = '';
 }
+
 //Ограничение на точность
-function signs_count() {
+function signs_count()
+{
     let str = document.getElementById("accuracy").value;
-    if (str !== "") {
+    if (str !== "")
+    {
         let num = Number(str);
-        if ((!num || num < 0 || !Number.isInteger(num)) && num !== 0) {
+        if ((!num || num < 0 || !Number.isInteger(num)) && num !== 0)
+        {
             error(1);
             return -1;
-        } else {
-            if (num > 25) {
+        }
+        else
+        {
+            if (num > 25)
+            {
                 num = 25;
                 document.getElementById("accuracy").value = "25";
             }
@@ -28,20 +37,28 @@ function signs_count() {
         }
     }
 }
+
 //Получение аналитического решения
-function get_analytical_root(x) {
+function get_analytical_root(x)
+{
     if (x === 0 || x === 1)
         return x;
-    if (Number.isInteger(x) && x >= 0) {
+    if (Number.isInteger(x) && x >= 0)
+    {
         let outside_root = 1;
         let inside_root = x;
         let d = 2
-        while (d * d <= inside_root) {
-            if (inside_root % (d * d) === 0) {
+        while (d * d <= inside_root)
+        {
+            if (inside_root % (d * d) === 0)
+            {
                 inside_root = inside_root / (d * d)
                 outside_root = outside_root * d
-            } else
+            }
+            else
+            {
                 d = d + 1
+            }
         }
         if (outside_root === 1)
             return "√" + String(inside_root);
@@ -49,46 +66,52 @@ function get_analytical_root(x) {
             return String(outside_root);
         else
             return String(outside_root) + "√" + String(inside_root);
-    } else
+    }
+    else
+    {
         return "";
+    }
 }
+
 //Получение квадратного корня из числа
-function sqrt() {
+function sqrt()
+{
     let signs = signs_count();
     if (signs === -1)
         return;
 
     let str = document.getElementById("input").value;
     if (str === "")
+    {
         error(2);
-    else {
-        //let num = Number(str);
-        require(['math.js'], function (math) {
-            //let Complex = complex_module;
+    }
+    else
+    {
+        require(['math.js'], function (math)
+        {
             let num;
-            try {
+            try
+            {
                 num = math.complex(str);
-            } catch (err) {
+            }
+            catch (err)
+            {
                 error(3);
                 return;
             }
 
             document.getElementById("output1").style.color = "black";
 
-            /*let sq;
-            if (num < 0)
-                sq = "± " + String(Math.sqrt(Math.abs(num)).toFixed(signs)) + "i";
-            else
-                sq = Math.sqrt(num).toFixed(signs);*/
-
             let ans;
-            if (math.isZero(num.im)) {
-                if (num.re < 0) {
+            if (math.isZero(num.im))
+            {
+                if (num.re < 0)
                     ans = "± " + String(Math.sqrt(Math.abs(num.re)).toFixed(signs)) + "i";
-                } else {
+                else
                     ans = String(Math.sqrt(num.re).toFixed(signs));
-                }
-            } else {
+            }
+            else
+            {
                 let cur_real = num.sqrt().re;
                 let cur_im = num.sqrt().im;
                 ans = "± " + String(cur_real.toFixed(signs))
@@ -96,12 +119,10 @@ function sqrt() {
             }
 
             document.getElementById("output1").innerHTML = ans;
-            if (math.isZero(num.im)) {
+            if (math.isZero(num.im))
                 document.getElementById("output2").innerHTML = get_analytical_root(num.re);
-            } else {
+            else
                 document.getElementById("output2").innerHTML = "";
-            }
         });
-
     }
 }
